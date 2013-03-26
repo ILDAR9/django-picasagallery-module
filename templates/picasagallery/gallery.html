@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load extras %}
+{% load i18n %}
+{% block content %}
+    <h3 class="offset2">Фотогалерея</h3>
+    <div class="row">
+    {% for album in albums %}
+        <div class="span3">
+            <a href="{% url picasagallery.views.album_list album.GetAlbumId %}">
+                <img style="margin-left: 20px" class="img-rounded" src="{% thumbnail_url album %}">
+            </a>
+            <pre><a style='text-align: center' href="{% url picasagallery.views.album_list album.GetAlbumId %}">{{ album.title.text }}</a></pre>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
